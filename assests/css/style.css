@@ -1,0 +1,37 @@
+
+hr {
+    border-bottom: solid black 3px;
+}
+
+.jumbotron {
+    padding: 1rem;
+    background-color: darkblue;
+    color: white;
+}
+
+.display-4 {
+    display: flex;
+    justify-content: center;
+}
+
+.title {
+   display: flex; 
+}
+
+.padding {
+    padding: 1rem;
+}
+
+.margin {
+    margin: 1rem;
+}
+
+#search-btn {
+    width: 20rem;
+    margin-left: 2rem;
+}
+
+#input-area {
+    width: 20rem;
+    margin-left: 2rem
+}
