@@ -40,9 +40,6 @@ console.log(userInput);
     console.log(inputArea);
     //Replace ${city} in url with user input
     //inputArea.replace(weatherApiUrl.cityName)
-
-    // Create element to add data from weather api to the web page
-    // append element 
     // if statement to make sure user inputs text
     if (userValue === "") {
         window.alert('Please enter a value');
@@ -56,9 +53,13 @@ console.log(userInput);
 
 
 function displayHistory() {
-    // empty string to push into
+    // empty string to push into //searchHistory-already created
 
     // for loop go through history array, setattr
+    for (let i = 0; i < searchHistory.length; i++) {
+        const forHistory = searchHistory[index];
+        
+    }
 }
 
 function updateLocal(search) {
@@ -68,7 +69,10 @@ function updateLocal(search) {
 
 function pullHistory() {
     //pull history from local storage
+    //JSON.parse(window.localStorage.getItem(userInput));
+
     //json parse whatever is stringified
+    //window.localStorage.setItem('city', userInput);
 }
 
 function displayWeatherData() {
@@ -78,7 +82,7 @@ function displayWeatherData() {
 
 function forecast() {
     // 5 day forecast 
-    // cardTitle.textContent = dayjs.unix(unixTs).tz(timezone).format('M/D/YYYY');
+    cardTitle.textContent = dayjs.unix(unixTs).tz(timezone).format('M/D/YYYY');
 }
 
 
