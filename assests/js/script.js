@@ -6,8 +6,11 @@ const searchHistory = [];
 var searchBtn = document.getElementById('search-btn');
 var inputArea = document.getElementById('input-area');
 var cityName = document.getElementById('input-area');
-var weatherApiUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=5&appid=753a34ec81da704dc4f3b41a1460fc4f`
+var weatherApiUrl = `http://api.openweathermap.org`
 
+var searchHistoryContainer = document.getElementById('search-history-container')
+var todayWeather = document.getElementById('today')
+var forecastWeather = document.getElementById('forecast')
 
 //===========//
 
@@ -15,22 +18,43 @@ var weatherApiUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&
 dayjs.extend(window.dayjs_plugin_utc);
 dayjs.extend(window.dayjs_plugin_timezone);
 
+
+function displayWeatherData() {
+    // temp, wind speed, etc. Element for variables. setattr= UV INDEX
+    //var temp = ;
+    //var windSpeed = ;
+    //var uvIndex = ;
+    // display current weather
+}
+
+function forecast() {
+    // 5 day forecast 
+    cardTitle.textContent = dayjs.unix(unixTs).tz(timezone).format('M/D/YYYY');
+}
+
+function renderItems(city, data) {
+    displayWeatherData (city, data.current, data.timezone);
+    forecast (data.daily, data.timezone);
+}
+
 // Url reguest for weather data
 function weatherData(location) {
     var {lat} = location;
     var {lon} = location;
+    var city = location.name
     var apiUrl = `${weatherApiUrl}/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&exclude=minutely,hourly&appid=${apiKey}`;
-    fetch(weatherApiUrl)
+    fetch(apiUrl)
         .then(function (response) {
             return response.json()
         })
         .then(function (data) {
-            console.log(data);
             renderItems(city, data);
+            console.log(city, data);
         })
 }
 
 weatherData(weatherApiUrl);
+// weatherData(location);
 
 // Event listner for search button 
 function userResponse() {
@@ -57,8 +81,12 @@ function displayHistory() {
 
     // for loop go through history array, setattr
     for (let i = 0; i < searchHistory.length; i++) {
-        const forHistory = searchHistory[index];
+        var forHistory = searchHistory[index];
+        // change variable name
+        var previousSearch = document.createElement('button')
+        previousSearch.textContent = forHistory;
         
+        searchHistoryContainer.append(previousSearch); 
     }
 }
 
@@ -73,16 +101,6 @@ function pullHistory() {
 
     //json parse whatever is stringified
     //window.localStorage.setItem('city', userInput);
-}
-
-function displayWeatherData() {
-    // display current weather
-    // temp, wind speed, etc. Element for variables. setattr= UV INDEX
-}
-
-function forecast() {
-    // 5 day forecast 
-    cardTitle.textContent = dayjs.unix(unixTs).tz(timezone).format('M/D/YYYY');
 }
 
 
