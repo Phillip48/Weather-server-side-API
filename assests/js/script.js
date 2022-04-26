@@ -47,16 +47,21 @@ function displayWeatherData(lat, lon) {
       return weatherData.json();
     })
     .then(function (weatherResults) {
+      let cityName = document.getElementById('input-area')
+      cityName = cityName.value;
+
+      let citySpan = document.getElementById('city-input')
       var temp = document.getElementById('temp');
       var windSpeed = document.getElementById('windSpeed');
       var humidity = document.getElementById('humidity');
       var uvIndex = document.getElementById('uvIndex');
 
+      citySpan.append(cityName)
       temp.textContent = weatherResults.current.temp;
       windSpeed.textContent = weatherResults.current.wind_speed;
       humidity.textContent = weatherResults.current.humidity;
       uvIndex.textContent = weatherResults.current.uvi;
-
+      
       var dailyTemp = document.getElementById('dailytemp');
       var dailyWindSpeed = document.getElementById('dailywindSpeed');
       var dailyHumidity = document.getElementById('dailyhumidity');
