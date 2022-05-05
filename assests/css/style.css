@@ -19,7 +19,7 @@ hr {
 
 .jumbotron {
     padding: 1rem;
-    background-color: darkblue;
+    background-color: mediumblue;
     color: white;
 }
 
@@ -53,16 +53,25 @@ hr {
 .number-1 {
     display: flex;
     flex-direction: column;
-    width: 45%;
+    width: 30%;
 }
 
 .number-3 {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+}
+.future-forecast{
+    display: flex;
+    flex-direction: row;
+}
+
+.card-place {
+    display: flex;
+    flex-direction: row;
 }
 
 #current-day-forecast {
     display: flex;
-    width: 45%;
+    width: 65%;
     flex-direction: column;
 }
