@@ -122,43 +122,47 @@ function userResponse(event) {
   event.preventDefault();
   // var userInput = inputArea;
   var userValue = inputArea.value.trim();
-  //var addHistory = userValue.push(searchHistory)
-  console.log(userValue);
 
   // if statement to make sure user inputs text
   if (userValue === "") {
     window.alert("Please enter a value");
   } else {
     weatherData(userValue);
-    forecast();
+    // forecast();
+    displayHistory(userValue);
     // userValue.textContent = document.getElementById('city-input')
   }
-  displayHistory();
-
 }
 
-function displayHistory(search) {
-  inputArea.innerHTML = "";
+function displayHistory(userValue) {
   // empty string to push into //searchHistory-already created
-  var addHistory = localStorage.getItem("searchHistory");
 
-  if (addHistory != undefined) {
-    searchHistory = JSON.parse(addHistory);
-  }
-  searchHistory.push(search);
+  var previousSearch = document.createElement("button");
+  // previousSearch = userValue;3
+  previousSearch.append(userValue);
+  searchHistoryContainer.append(previousSearch);
 
-  // for loop go through history array, setattr
-  for (let i = searchHistory.length - 1; i >= 0; i--) {
-    var forHistory = searchHistory[i];
 
-    var previousSearch = document.createElement("button");
-    previousSearch.textContent = forHistory;
 
-    localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
-    //searchHistoryContainer.append(forHistory);
-  }
-  //console.log(forHistory);
-  //console.log(searchHistory);
+  // var addHistory = localStorage.getItem("searchHistory");
+
+  // if (addHistory != undefined) {
+  //   searchHistory = JSON.parse(addHistory);
+  // }
+  // searchHistory.push(search);
+
+  // // for loop go through history array, setattr
+  // for (let i = searchHistory.length - 1; i >= 0; i--) {
+  //   var forHistory = searchHistory[i];
+
+  //   var previousSearch = document.createElement("button");
+  //   previousSearch.textContent = forHistory;
+
+  //   localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+  //   searchHistoryContainer.append(forHistory);
+  // }
+  // console.log(forHistory);
+  // console.log(searchHistory);
 }
 
 searchBtn.addEventListener("click", userResponse);

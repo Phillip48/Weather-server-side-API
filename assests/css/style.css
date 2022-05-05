@@ -75,3 +75,9 @@ hr {
     width: 65%;
     flex-direction: column;
 }
+
+#search-history-container {
+    display: flex;
+    flex-direction: column;
+    padding: .5rem;
+}
