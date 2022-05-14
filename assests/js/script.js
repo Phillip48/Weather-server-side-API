@@ -64,9 +64,9 @@ function displayWeatherData(lat, lon) {
       var uvIndex = document.getElementById('uvIndex');
 
       citySpan.append(cityName)
-      temp.textContent = weatherResults.current.temp;
-      windSpeed.textContent = weatherResults.current.wind_speed;
-      humidity.textContent = weatherResults.current.humidity;
+      temp.textContent = weatherResults.current.temp + "°F";
+      windSpeed.textContent = weatherResults.current.wind_speed + "MPH";
+      humidity.textContent = weatherResults.current.humidity + "%";
       uvIndex.textContent = weatherResults.current.uvi;
 
       // card 1
@@ -74,45 +74,45 @@ function displayWeatherData(lat, lon) {
       var dailyWindSpeed1 = document.getElementById('dailywindSpeed');
       var dailyHumidity1 = document.getElementById('dailyhumidity');
 
-      dailyTemp1.textContent = weatherResults.daily[0].temp.day;
-      dailyWindSpeed1.textContent = weatherResults.daily[0].wind_speed;
-      dailyHumidity1.textContent = weatherResults.daily[0].humidity;
+      dailyTemp1.textContent = weatherResults.daily[0].temp.day + " °F";
+      dailyWindSpeed1.textContent = weatherResults.daily[0].wind_speed + " MPH";
+      dailyHumidity1.textContent = weatherResults.daily[0].humidity + " %";
 
       // card 2
       var dailyTemp2 = document.getElementById('dailytemp2');
       var dailyWindSpeed2 = document.getElementById('dailywindSpeed2');
       var dailyHumidity2 = document.getElementById('dailyhumidity2');
 
-      dailyTemp2.textContent = weatherResults.daily[1].temp.day;
-      dailyWindSpeed2.textContent = weatherResults.daily[1].wind_speed;
-      dailyHumidity2.textContent = weatherResults.daily[1].humidity;
+      dailyTemp2.textContent = weatherResults.daily[1].temp.day + " °F";
+      dailyWindSpeed2.textContent = weatherResults.daily[1].wind_speed + " MPH";
+      dailyHumidity2.textContent = weatherResults.daily[1].humidity + " %";
 
       // card 3
       var dailyTemp3 = document.getElementById('dailytemp3');
       var dailyWindSpeed3 = document.getElementById('dailywindSpeed3');
       var dailyHumidity3 = document.getElementById('dailyhumidity3');
 
-      dailyTemp3.textContent = weatherResults.daily[2].temp.day;
-      dailyWindSpeed3.textContent = weatherResults.daily[2].wind_speed;
-      dailyHumidity3.textContent = weatherResults.daily[2].humidity;
+      dailyTemp3.textContent = weatherResults.daily[2].temp.day + " °F";
+      dailyWindSpeed3.textContent = weatherResults.daily[2].wind_speed + " MPH";
+      dailyHumidity3.textContent = weatherResults.daily[2].humidity + " %";
 
       // card 4
       var dailyTemp4 = document.getElementById('dailytemp4');
       var dailyWindSpeed4 = document.getElementById('dailywindSpeed4');
       var dailyHumidity4 = document.getElementById('dailyhumidity4');
 
-      dailyTemp4.textContent = weatherResults.daily[3].temp.day;
-      dailyWindSpeed4.textContent = weatherResults.daily[3].wind_speed;
-      dailyHumidity4.textContent = weatherResults.daily[3].humidity;
+      dailyTemp4.textContent = weatherResults.daily[3].temp.day + " °F";
+      dailyWindSpeed4.textContent = weatherResults.daily[3].wind_speed + " MPH";
+      dailyHumidity4.textContent = weatherResults.daily[3].humidity + " %";
 
       // card 5
       var dailyTemp5 = document.getElementById('dailytemp5');
       var dailyWindSpeed5 = document.getElementById('dailywindSpeed5');
       var dailyHumidity5 = document.getElementById('dailyhumidity5');
 
-      dailyTemp5.textContent = weatherResults.daily[4].temp.day;
-      dailyWindSpeed5.textContent = weatherResults.daily[4].wind_speed;
-      dailyHumidity5.textContent = weatherResults.daily[4].humidity;
+      dailyTemp5.textContent = weatherResults.daily[4].temp.day + " °F";
+      dailyWindSpeed5.textContent = weatherResults.daily[4].wind_speed + " MPH";
+      dailyHumidity5.textContent = weatherResults.daily[4].humidity + " %";
       // display current weather
     });
 }
