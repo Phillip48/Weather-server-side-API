@@ -11,37 +11,37 @@ const d = new Date();
 //===========//
 
 // Days.js time
-dayjs.extend(window.dayjs_plugin_utc);
-dayjs.extend(window.dayjs_plugin_timezone);
+// dayjs.extend(window.dayjs_plugin_utc);
+// dayjs.extend(window.dayjs_plugin_timezone);
 
-function forecast() {
-  // 5 day forecast
-  // const today = new Date()
-  // const tomorrow = new Date(today);
-  // let dateCard = tomorrow.setDate(tomorrow.getDate() + 1)
-  // let cardTitle = document.getElementById('future-date')
-  // cardTitle.textContent = datecard;
-  cardTitle.textContent = dayjs.unix(unixTs).tz(timezone).format("M/D/YYYY");
+// function forecast() {
+//   // 5 day forecast
+//   // const today = new Date()
+//   // const tomorrow = new Date(today);
+//   // let dateCard = tomorrow.setDate(tomorrow.getDate() + 1)
+//   // let cardTitle = document.getElementById('future-date')
+//   // cardTitle.textContent = datecard;
+//   cardTitle.textContent = dayjs.unix(unixTs).tz(timezone).format("M/D/YYYY");
 
 
-}
+// }
 
-function renderItems(city, data) {
-  //displayWeatherData(city, data.current, data.timezone);
-  forecast(data.daily, data.timezone);
-}
+// function renderItems(city, data) {
+//   //displayWeatherData(city, data.current, data.timezone);
+//   forecast(data.daily, data.timezone);
+// }
 
 // Url request for weather data
 function weatherData(city) {
   var cityUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${apiKey}`;
-  inputArea.textContent = document.getElementById("city-input")
+  // inputArea.textContent = document.getElementById("city-input")
   fetch(cityUrl)
     .then(function (response) {
       return response.json();
     })
-    .then(function (regularResponse) {
-      var lat = regularResponse[0].lat;
-      var lon = regularResponse[0].lon;
+    .then(function (response) {
+      var lat = response[0].lat;
+      var lon = response[0].lon;
       console.log(lat, lon);
       displayWeatherData(lat, lon);
     });
@@ -58,36 +58,40 @@ function displayWeatherData(lat, lon) {
     .then(function (weatherResults) {
       let cityName = document.getElementById('input-area')
       cityName = cityName.value;
+      
 
       let citySpan = document.getElementById('city-input')
       var temp = document.getElementById('temp');
       var windSpeed = document.getElementById('windSpeed');
       var humidity = document.getElementById('humidity');
       var uvIndex = document.getElementById('uvIndex');
-
+      citySpan.innerHTML = '';
       citySpan.append(cityName)
+      
       temp.textContent = weatherResults.current.temp + "°F";
       windSpeed.textContent = weatherResults.current.wind_speed + "MPH";
       humidity.textContent = weatherResults.current.humidity + "%";
       uvIndex.textContent = weatherResults.current.uvi;
-      if(uvIndex.textContent <= 3) {
+      if (uvIndex.textContent <= 3) {
         //green
         uvIndex.classList.add('uv-color-green')
-      } else if(uvIndex <= 7 && uvIndex >= 4){
-        // orange/yellow
+      } else if (uvIndex.textContent <= 7 && uvIndex.textContent >= 4) {
+        // yellow
         uvIndex.classList.add('uv-color-yellow')
-      }else if(uvIndex <= 10 && uvIndex >= 8){
+      } else if (uvIndex.textContent <= 10 && uvIndex.textContent >= 8) {
         //red
         uvIndex.classList.add('uv-color-red')
       }
 
       //date now
+      
       let todayDate = document.getElementById('date-now');
+      todayDate.innerHTML = '';
       let year = d.getFullYear();
       let month = d.getMonth() + 1;
       let day = d.getDate();
-      let format = month + '/' +day + '/' + year;
-      todayDate.append(format)
+      let format = month + '/' + day + '/' + year;
+      todayDate.append(format);
       //
 
       // card 1
@@ -101,11 +105,12 @@ function displayWeatherData(lat, lon) {
 
       //date 1
       let tomorrowDate = document.getElementById('date1');
+      tomorrowDate.innerHTML = '';
       let tomorrowYear = d.getFullYear();
       let tomorrowMonth = d.getMonth() + 1;
       let tomorrowDay = d.getDate() + 1;
       let tomorrowFormat = tomorrowMonth + '/' + tomorrowDay + '/' + tomorrowYear;
-      tomorrowDate.append(tomorrowFormat)
+      tomorrowDate.append(tomorrowFormat);
       //
 
 
@@ -117,8 +122,10 @@ function displayWeatherData(lat, lon) {
       dailyTemp2.textContent = weatherResults.daily[1].temp.day + " °F";
       dailyWindSpeed2.textContent = weatherResults.daily[1].wind_speed + " MPH";
       dailyHumidity2.textContent = weatherResults.daily[1].humidity + " %";
+
       //date 2
       let tomorrowDate2 = document.getElementById('date2');
+      tomorrowDate2.innerHTML = '';
       let tomorrowYear2 = d.getFullYear();
       let tomorrowMonth2 = d.getMonth() + 1;
       let tomorrowDay2 = d.getDate() + 2;
@@ -137,6 +144,7 @@ function displayWeatherData(lat, lon) {
 
       //date 3
       let tomorrowDat3 = document.getElementById('date3');
+      tomorrowDat3.innerHTML = '';
       let tomorrowYea3 = d.getFullYear();
       let tomorrowMont3 = d.getMonth() + 1;
       let tomorrowDa3 = d.getDate() + 3;
@@ -155,6 +163,7 @@ function displayWeatherData(lat, lon) {
 
       //date 4
       let tomorrowDate4 = document.getElementById('date4');
+      tomorrowDate4.innerHTML = '';
       let tomorrowYear4 = d.getFullYear();
       let tomorrowMonth4 = d.getMonth() + 1;
       let tomorrowDay4 = d.getDate() + 4;
@@ -174,6 +183,7 @@ function displayWeatherData(lat, lon) {
 
       //date 5
       let tomorrowDate5 = document.getElementById('date5');
+      tomorrowDate5.innerHTML = '';
       let tomorrowYear5 = d.getFullYear();
       let tomorrowMonth5 = d.getMonth() + 1;
       let tomorrowDay5 = d.getDate() + 5;
@@ -185,7 +195,7 @@ function displayWeatherData(lat, lon) {
 
 // Event listner for search button
 function userResponse(event) {
-  // event.preventDefault();
+  event.preventDefault();
   // var userInput = inputArea;
   var userValue = inputArea.value.trim();
 
@@ -201,34 +211,32 @@ function userResponse(event) {
 }
 
 function displayHistory(userValue) {
+  searchHistoryContainer.innerHTML = '';
   // empty string to push into //searchHistory-already created
+  localStorage.setItem('userCity', userValue)
+  
 
-  var previousSearch = document.createElement("button");
-  // previousSearch = userValue;3
-  previousSearch.append(userValue);
-  searchHistoryContainer.append(previousSearch);
+  let userSearch = localStorage.getItem('userCity', userValue);
+
+  searchHistory.push(userSearch);
+
+  // searchHistory.map(newArray, () => {
+  //   let template = `<button class="margin padding">${city}</button>`
+  //   searchHistoryContainer.insertAdjacentHTML("beforeend", template);
+  // });
+
+  searchHistory.forEach(function (userSearch) {
+    // for (let index = 0; index < searchHistory.length; index++) {
+    //   const element = array[index];
+    // }
+    let template = `<button class="margin padding" onclick="weatherData()" id="event-listner-new">${userSearch}</button>`
+    searchHistoryContainer.insertAdjacentHTML("beforeend", template);
+  });
 
 
 
-  // var addHistory = localStorage.getItem("searchHistory");
-
-  // if (addHistory != undefined) {
-  //   searchHistory = JSON.parse(addHistory);
-  // }
-  // searchHistory.push(search);
-
-  // // for loop go through history array, setattr
-  // for (let i = searchHistory.length - 1; i >= 0; i--) {
-  //   var forHistory = searchHistory[i];
-
-  //   var previousSearch = document.createElement("button");
-  //   previousSearch.textContent = forHistory;
-
-  //   localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
-  //   searchHistoryContainer.append(forHistory);
-  // }
-  // console.log(forHistory);
-  // console.log(searchHistory);
+  // previousSearch.append(userValue);
+  // searchHistoryContainer.append(previousSearch);
 }
 
 searchBtn.addEventListener("click", userResponse);
