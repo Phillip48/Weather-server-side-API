@@ -33,7 +33,7 @@ function renderItems(city, data) {
 
 // Url request for weather data
 function weatherData(city) {
-  var cityUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${apiKey}`;
+  var cityUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${apiKey}`;
   inputArea.textContent = document.getElementById("city-input")
   fetch(cityUrl)
     .then(function (response) {
@@ -49,7 +49,7 @@ function weatherData(city) {
 
 //
 function displayWeatherData(lat, lon) {
-  var coorUrl = `http://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&exclude=minutely,hourly&appid=${apiKey}`
+  var coorUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&exclude=minutely,hourly&appid=${apiKey}`
   console.log(coorUrl);
   fetch(coorUrl)
     .then(function (weatherData) {
