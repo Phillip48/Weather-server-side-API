@@ -49,7 +49,12 @@ function weatherData(city) {
 
 //
 function displayWeatherData(lat, lon) {
-  var coorUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&exclude=minutely,hourly&appid=${apiKey}`
+  if (location.protocol === 'http:') {
+    var coorUrl = `http://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&exclude=minutely,hourly&appid=${apiKey}`
+  } else {
+    var coorUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&exclude=minutely,hourly&appid=${apiKey}`
+  }
+  
   console.log(coorUrl);
   fetch(coorUrl)
     .then(function (weatherData) {
@@ -88,7 +93,6 @@ function displayWeatherData(lat, lon) {
       let day = d.getDate();
       let format = month + '/' +day + '/' + year;
       todayDate.append(format)
-      console.log(todayDate)
       //
 
       // card 1
