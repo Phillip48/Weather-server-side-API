@@ -4,6 +4,29 @@ hr {
     width: 400px;
 }
 
+/* UvIndex coloring */
+.uv-color-green{
+    background-color: green;
+    padding: .2rem;
+    border: 1px solid black;
+    border-radius: 500px;
+}
+
+.uv-color-yellow{
+    background-color: yellow;
+    padding: .2rem;
+    border: 1px solid black;
+    border-radius: 500px;
+}
+
+.uv-color-red{
+    background-color: red;
+    padding: .2rem;
+    border: 1px solid black;
+    border-radius: 500px;
+}
+
+/*  */
 .row {
     display: flex;
     flex-direction: row;
@@ -81,4 +104,32 @@ hr {
     display: flex;
     flex-direction: column;
     padding: .5rem;
+}
+
+@media screen and (max-width: 1350px) {
+    *{
+        display: flex;
+        flex-direction: column;
+    }
+    .media-screen{
+        display: flex;
+        justify-content: space-around;
+    }
+    #current-day-forecast{
+        width: 45%;
+    }
+}
+
+@media screen and (max-width: 950px) {
+    .media-screen{
+        display: flex;
+        flex-direction: column;
+    }
+    #current-day-forecast{
+        width: 100%;
+    }
+    .number-1{
+        width: 100%;
+        align-items: center;
+    }
 }

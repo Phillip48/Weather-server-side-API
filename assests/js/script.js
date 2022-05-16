@@ -6,6 +6,7 @@ var inputArea = document.getElementById("input-area");
 var searchHistoryContainer = document.getElementById("search-history-container");
 var todayWeather = document.getElementById("today");
 var forecastWeather = document.getElementById("forecast");
+const d = new Date();
 
 //===========//
 
@@ -68,6 +69,26 @@ function displayWeatherData(lat, lon) {
       windSpeed.textContent = weatherResults.current.wind_speed + "MPH";
       humidity.textContent = weatherResults.current.humidity + "%";
       uvIndex.textContent = weatherResults.current.uvi;
+      if(uvIndex.textContent <= 3) {
+        //green
+        uvIndex.classList.add('uv-color-green')
+      } else if(uvIndex <= 7 && uvIndex >= 4){
+        // orange/yellow
+        uvIndex.classList.add('uv-color-yellow')
+      }else if(uvIndex <= 10 && uvIndex >= 8){
+        //red
+        uvIndex.classList.add('uv-color-red')
+      }
+
+      //date now
+      let todayDate = document.getElementById('date-now');
+      let year = d.getFullYear();
+      let month = d.getMonth() + 1;
+      let day = d.getDate();
+      let format = month + '/' +day + '/' + year;
+      todayDate.append(format)
+      console.log(todayDate)
+      //
 
       // card 1
       var dailyTemp1 = document.getElementById('dailytemp');
@@ -78,6 +99,16 @@ function displayWeatherData(lat, lon) {
       dailyWindSpeed1.textContent = weatherResults.daily[0].wind_speed + " MPH";
       dailyHumidity1.textContent = weatherResults.daily[0].humidity + " %";
 
+      //date 1
+      let tomorrowDate = document.getElementById('date1');
+      let tomorrowYear = d.getFullYear();
+      let tomorrowMonth = d.getMonth() + 1;
+      let tomorrowDay = d.getDate() + 1;
+      let tomorrowFormat = tomorrowMonth + '/' + tomorrowDay + '/' + tomorrowYear;
+      tomorrowDate.append(tomorrowFormat)
+      //
+
+
       // card 2
       var dailyTemp2 = document.getElementById('dailytemp2');
       var dailyWindSpeed2 = document.getElementById('dailywindSpeed2');
@@ -86,6 +117,14 @@ function displayWeatherData(lat, lon) {
       dailyTemp2.textContent = weatherResults.daily[1].temp.day + " °F";
       dailyWindSpeed2.textContent = weatherResults.daily[1].wind_speed + " MPH";
       dailyHumidity2.textContent = weatherResults.daily[1].humidity + " %";
+      //date 2
+      let tomorrowDate2 = document.getElementById('date2');
+      let tomorrowYear2 = d.getFullYear();
+      let tomorrowMonth2 = d.getMonth() + 1;
+      let tomorrowDay2 = d.getDate() + 2;
+      let tomorrowFormat2 = tomorrowMonth2 + '/' + tomorrowDay2 + '/' + tomorrowYear2;
+      tomorrowDate2.append(tomorrowFormat2)
+      //
 
       // card 3
       var dailyTemp3 = document.getElementById('dailytemp3');
@@ -96,6 +135,15 @@ function displayWeatherData(lat, lon) {
       dailyWindSpeed3.textContent = weatherResults.daily[2].wind_speed + " MPH";
       dailyHumidity3.textContent = weatherResults.daily[2].humidity + " %";
 
+      //date 3
+      let tomorrowDat3 = document.getElementById('date3');
+      let tomorrowYea3 = d.getFullYear();
+      let tomorrowMont3 = d.getMonth() + 1;
+      let tomorrowDa3 = d.getDate() + 3;
+      let tomorrowForma3 = tomorrowMont3 + '/' + tomorrowDa3 + '/' + tomorrowYea3;
+      tomorrowDat3.append(tomorrowForma3)
+      //
+
       // card 4
       var dailyTemp4 = document.getElementById('dailytemp4');
       var dailyWindSpeed4 = document.getElementById('dailywindSpeed4');
@@ -104,6 +152,15 @@ function displayWeatherData(lat, lon) {
       dailyTemp4.textContent = weatherResults.daily[3].temp.day + " °F";
       dailyWindSpeed4.textContent = weatherResults.daily[3].wind_speed + " MPH";
       dailyHumidity4.textContent = weatherResults.daily[3].humidity + " %";
+
+      //date 4
+      let tomorrowDate4 = document.getElementById('date4');
+      let tomorrowYear4 = d.getFullYear();
+      let tomorrowMonth4 = d.getMonth() + 1;
+      let tomorrowDay4 = d.getDate() + 4;
+      let tomorrowFormat4 = tomorrowMonth4 + '/' + tomorrowDay4 + '/' + tomorrowYear4;
+      tomorrowDate4.append(tomorrowFormat4)
+      //
 
       // card 5
       var dailyTemp5 = document.getElementById('dailytemp5');
@@ -114,12 +171,21 @@ function displayWeatherData(lat, lon) {
       dailyWindSpeed5.textContent = weatherResults.daily[4].wind_speed + " MPH";
       dailyHumidity5.textContent = weatherResults.daily[4].humidity + " %";
       // display current weather
+
+      //date 5
+      let tomorrowDate5 = document.getElementById('date5');
+      let tomorrowYear5 = d.getFullYear();
+      let tomorrowMonth5 = d.getMonth() + 1;
+      let tomorrowDay5 = d.getDate() + 5;
+      let tomorrowFormat5 = tomorrowMonth5 + '/' + tomorrowDay5 + '/' + tomorrowYear5;
+      tomorrowDate5.append(tomorrowFormat5)
+      //
     });
 }
 
 // Event listner for search button
 function userResponse(event) {
-  event.preventDefault();
+  // event.preventDefault();
   // var userInput = inputArea;
   var userValue = inputArea.value.trim();
 
